@@ -7,6 +7,9 @@ WORKDIR /app
 # Projektdateien kopieren
 COPY . .
 
+# Ausführungsrechte für gradlew setzen
+RUN chmod +x ./gradlew
+
 # Baue das Projekt (ohne Tests)
 RUN ./gradlew clean build -x test
 
