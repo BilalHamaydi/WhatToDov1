@@ -9,8 +9,8 @@ public class Calender {
     String year;
     int week;
 
-    public Calender(){
-
+    public Calender(int week){
+    //this.week
     }
 
 }
