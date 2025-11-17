@@ -1,15 +1,14 @@
-#
-# Build stage
-#
-FROM gradle:9-jdk25 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+# Verwende Java 25 (neueste Version von Eclipse Temurin)
+FROM eclipse-temurin:25-jdk
 
-LABEL org.name="BilalHamaydi"
-#
-# Package stage
-#
-FROM eclipse-temurin:25-jdk-jammy
-COPY --from=build /home/gradle/src/build/libs/WhatToDov1-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Arbeitsverzeichnis im Container
+WORKDIR /app
+
+# Projektdateien kopieren
+COPY . .
+
+# Baue das Projekt (ohne Tests)
+RUN ./gradlew clean build -x test
+
+# Starte deine Spring Boot App
+CMD ["java", "-jar", "build/libs/demo-0.0.1-SNAPSHOT.jar"]

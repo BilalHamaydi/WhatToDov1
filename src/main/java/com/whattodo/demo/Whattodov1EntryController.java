@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Calendar;
+
 
 
 @RestController
@@ -31,12 +33,6 @@ public class Whattodov1EntryController {
 
     public List<Whattodov1Entry> getTodoEntries() {
         return List.of(new Whattodov1Entry("M1"), new Whattodov1Entry("M2"), new Whattodov1Entry("M3"));
-    }
-
-    @GetMapping("/todos4")
-
-    public List<Whattodov1Entry> getCalender() {
-        return List.of(new Calender(1));
     }
 
 
