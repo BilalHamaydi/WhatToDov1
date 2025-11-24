@@ -10,8 +10,16 @@ public class Whattodov1EntryController {
 
     private final List<Whattodov1Entry> todos = new ArrayList<>();
 
+    @PostMapping("/") // oder @PostMapping("/todos")
+    public Whattodov1Entry addTodo(@RequestBody Whattodov1Entry newTodo) {
+        long newId = System.currentTimeMillis();
+        newTodo.setId(newId);
+        todos.add(newTodo);
+        return newTodo;
+    }
+
     // Root-Endpunkt: gibt alle Todos als JSON zurück
-    @GetMapping("/")
+    @GetMapping("/todo")
     public List<Whattodov1Entry> getAllTodosRoot() {
         return todos;
     }
@@ -22,13 +30,6 @@ public class Whattodov1EntryController {
         return todos;
     }
 
-    @PostMapping("/todos")
-    public Whattodov1Entry addTodo(@RequestBody Whattodov1Entry newTodo) {
-        long newId = System.currentTimeMillis();
-        newTodo.setId(newId);
-        todos.add(newTodo);
-        return newTodo;
-    }
 
     @DeleteMapping("/todos/{id}")
     public void deleteTodo(@PathVariable Long id) {
