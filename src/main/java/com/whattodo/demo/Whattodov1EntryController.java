@@ -35,6 +35,7 @@ public class Whattodov1EntryController {
     public void deleteTodo(@PathVariable Long id) {
         todos.removeIf(todo -> todo.getId().equals(id));
     }
+
 }
 
 
