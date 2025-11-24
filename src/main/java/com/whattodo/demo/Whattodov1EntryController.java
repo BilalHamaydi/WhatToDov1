@@ -1,5 +1,6 @@
 package com.whattodo.demo;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
         import java.util.List;
 import java.util.ArrayList;
@@ -28,9 +29,11 @@ public class Whattodov1EntryController {
 
     // DELETE /todos/{id}
     @DeleteMapping("/{id}")
-    public void deleteTodo(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
         todos.removeIf(todo -> todo.getId().equals(id));
+        return ResponseEntity.noContent().build(); // 204 No Content, kein Body!
     }
+
 
     // Optional: GET /
     // Gibt alle Todos zurück (für root)
