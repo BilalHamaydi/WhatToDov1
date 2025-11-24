@@ -5,12 +5,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("/todos")
 @CrossOrigin(origins = "*")
 public class Whattodov1EntryController {
 
     private final List<Whattodov1Entry> todos = new ArrayList<>();
 
-    @PostMapping("/") // oder @PostMapping("/todos")
+    // GET /todos
+    @GetMapping
+    public List<Whattodov1Entry> getAllTodos() {
+        return todos;
+    }
+
+    // POST /todos
+    @PostMapping
     public Whattodov1Entry addTodo(@RequestBody Whattodov1Entry newTodo) {
         long newId = System.currentTimeMillis();
         newTodo.setId(newId);
@@ -18,25 +26,22 @@ public class Whattodov1EntryController {
         return newTodo;
     }
 
-    // Root-Endpunkt: gibt alle Todos als JSON zurück
-    @GetMapping("/todo")
-    public List<Whattodov1Entry> getAllTodosRoot() {
-        return todos;
-    }
-
-    // /todos-Endpunkt: gibt alle Todos als JSON zurück
-    @GetMapping("/todos")
-    public List<Whattodov1Entry> getAllTodos() {
-        return todos;
-    }
-
-
-    @DeleteMapping("/todos/{id}")
+    // DELETE /todos/{id}
+    @DeleteMapping("/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todos.removeIf(todo -> todo.getId().equals(id));
     }
 
+    // Optional: GET /
+    // Gibt alle Todos zurück (für root)
+    @GetMapping("/")
+    public List<Whattodov1Entry> getRootTodos() {
+        return todos;
+    }
 }
+
+
+
 
 
 
