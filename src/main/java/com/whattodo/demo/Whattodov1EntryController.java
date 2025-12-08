@@ -1,12 +1,13 @@
 package com.whattodo.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
         import java.util.List;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/todos")
+@RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class Whattodov1EntryController {
 
@@ -40,6 +41,19 @@ public class Whattodov1EntryController {
     @GetMapping("/")
     public List<Whattodov1Entry> getRootTodos() {
         return todos;
+    }
+
+    @Autowired
+    private WhatToDoService service;
+
+    @PostMapping
+    public Task createTask(@RequestBody Task task) {
+        return service.save(task);
+    }
+
+    @GetMapping("/{id}")
+    public Task getTask(@PathVariable Long id) {
+        return service.get(id);
     }
 }
 
