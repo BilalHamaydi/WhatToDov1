@@ -8,14 +8,17 @@ Diese Website soll eine ToDo-Liste mit einem Kalender verbinden.
 Funktionen:
 - Tasks erstellen (done)
 - Kalender aufrufen
-- Tasks kategorisieren
+- Tasks kategorisieren (done)
+- Kategorien erstellen
+- Kategorien löschen 
 - Tasks löschen (done)
-- Tasks abhaken (halfly done)
-- Farben für Tasks
+- Tasks abhaken (done)
+- Farben für Tasks (done)
+- Dark-Mode (done)
 
 Optional:
 - Benachrichtigungen
-- Dark-Mode (done)
+
 
 *Mindestanforderungen:*
 
@@ -31,6 +34,3 @@ Credentials gehen nicht als Klartext nach GitHub. (done)
 
 App setzt grob die ursprünglich präsentierte Projekt-Idee um
 und nutzt vorgegebenen Tech-Stack (Spring, Vue, Postgres). 
-
-Vor der Projekt-Deadline wird eine Screenshot-Dokumentation (einer pro Use-Case) per E-Mail eingereicht.
-Projekt wird in Übung (ggf. vom Paar) demonstriert.

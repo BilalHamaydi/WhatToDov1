@@ -7,6 +7,9 @@
 # BlueJ files
 *.ctxt
 
+# Creds nicht posten
+.env.*
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
