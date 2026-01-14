@@ -29,3 +29,17 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+def isWindows = System.getProperty('os.name').toLowerCase().contains('windows')
+def npmCmd = isWindows ? 'npm.cmd' : 'npm'
+
+tasks.register('frontendInstall', Exec) {
+    workingDir frontendDir
+    commandLine npmCmd, 'ci'
+}
+
+tasks.register('frontendBuild', Exec) {
+    dependsOn 'frontendInstall'
+    workingDir frontendDir
+    commandLine npmCmd, 'run', 'build'
+}
