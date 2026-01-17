@@ -25,18 +25,19 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CategoryCreateRequest req) {
         String name = (req == null) ? null : req.name();
-        service.create(name);
-        return ResponseEntity.noContent().build();
+        if (name == null || name.trim().isEmpty()) {
+            return ResponseEntity.badRequest().build(); // ✅ damit createCategory_emptyName_returns4xx passt
+        }
+        service.create(name.trim());
+        return ResponseEntity.ok().build(); // ✅ Tests erwarten isOk()
     }
 
     @DeleteMapping("/{name}")
     public ResponseEntity<Void> delete(@PathVariable String name) {
         try {
             boolean deleted = service.delete(name);
-            // 204 egal ob gefunden oder nicht (idempotent)
-            return ResponseEntity.noContent().build();
+            return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build(); // ✅ 404 wenn nicht vorhanden
         } catch (DataIntegrityViolationException e) {
-            // Kategorie ist noch in Verwendung -> 409 Conflict statt 500
             return ResponseEntity.status(409).build();
         }
     }
