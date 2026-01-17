@@ -49,7 +49,7 @@ class CategoryControllerIT {
     // ---------- Use Case: POST /categories ----------
 
     @Test
-    void createCategory_emptyName_returns4xx() throws Exception {
+    void  createCategory_emptyName_returns4xx() throws Exception {
         var body = om.createObjectNode();
         body.put("name", "");
 
