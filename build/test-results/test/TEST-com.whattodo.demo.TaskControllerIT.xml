@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.whattodo.demo.TaskControllerIT" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-01-17T00:31:27.240Z" hostname="LAPTOP-B" time="0.419">
+  <properties/>
+  <testcase name="toggleDone_unknownId_returns4xxOr404()" classname="com.whattodo.demo.TaskControllerIT" time="0.097"/>
+  <testcase name="deleteTask_unknownId_returns4xxOr404()" classname="com.whattodo.demo.TaskControllerIT" time="0.126"/>
+  <testcase name="toggleDone_setsDoneTrue()" classname="com.whattodo.demo.TaskControllerIT" time="0.065"/>
+  <testcase name="getTasks_returns200_andJsonArray()" classname="com.whattodo.demo.TaskControllerIT" time="0.02"/>
+  <testcase name="createTask_thenGetTasks_containsCreatedTaskName()" classname="com.whattodo.demo.TaskControllerIT" time="0.036"/>
+  <testcase name="createTask_withDate_isPersistedInResponse()" classname="com.whattodo.demo.TaskControllerIT" time="0.015"/>
+  <testcase name="createTask_missingName_returns4xx()" classname="com.whattodo.demo.TaskControllerIT" time="0.014"/>
+  <testcase name="deleteTask_removesItFromGetTasks()" classname="com.whattodo.demo.TaskControllerIT" time="0.033"/>
+  <system-out><![CDATA[2026-01-17T01:31:27.225+01:00  INFO 20732 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.whattodo.demo.TaskControllerIT]: TaskControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-17T01:31:27.233+01:00  INFO 20732 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.whattodo.demo.Whattodov1Application for test class com.whattodo.demo.TaskControllerIT
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
